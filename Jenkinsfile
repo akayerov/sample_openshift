@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                mvn clean compile
+                cmd clean compile
             }
         }
         stage('Test') {
             steps {
-                mvn test
+                cmd mvn test
             }
             post {
                 success {
