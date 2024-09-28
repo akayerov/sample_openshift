@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
            steps {
-              bat 'mvn -B -DskipTests clean package' //this command will be executed inside maven container
+              sh 'mvn -B -DskipTests clean package' //this command will be executed inside maven container
            }
         }
         stage('Test') {
