@@ -6,25 +6,25 @@ pipeline {
                 echo 'PreStage 1'
             }
         }
-        stage('PreStage 2') {
+        stage('Compile') {
             steps {
-                echo 'PreStage 2'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
+                mvn clean compile
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                mvn test
             }
             post {
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
+            }
+        }
+        stage('Package') {
+            steps {
+                mvn package
             }
         }
 
