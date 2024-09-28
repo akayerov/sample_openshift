@@ -22,11 +22,6 @@ pipeline {
                 }
             }
         }
-        stage('Package') {
-            steps {
-                mvn package
-            }
-        }
 
     }
 }
